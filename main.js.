@@ -1,0 +1,68 @@
+//Tugas 1 Konversi Fahrenheit ke Celsius
+function fahrenheitToCelsius(fahrenheit) {
+  // Rumus: Celsius = (Fahrenheit - 32) * 5/9
+  const celsius = (fahrenheit - 32) * 5/9;
+  return celsius.toFixed(2); // Mengembalikan dengan 2 angka desimal
+}
+
+
+const fahrenheit = 98.6;
+console.log(`${fahrenheit}°F = ${fahrenheitToCelsius(fahrenheit)}°C`);
+
+// Tugas 2: Konversi centimeter ke kilometer atau sebaliknya
+function convertLength(value, fromUnit) {
+  if (fromUnit === 'cm') {
+    // Konversi cm ke km (1 km = 100000 cm)
+    return `${(value / 100000).toFixed(6)} km`;
+  } else if (fromUnit === 'km') {
+    // Konversi km ke cm
+    return `${(value * 100000).toFixed(0)} cm`;
+  } else {
+    return 'Unit tidak valid. Gunakan "cm" atau "km"';
+  }
+}
+
+console.log(convertLength(100000, 'cm')); // Output: "1.000000 km"
+console.log(convertLength(1, 'km'));      // Output: "100000 cm"
+
+// Tugas 3: Fungsi untuk memeriksa bilangan ganjil
+function isOdd(n) {
+  // Jika n % 2 !== 0, maka bilangan tersebut ganjil
+  return n % 2 !== 0;
+}
+
+
+console.log(`1000 adalah bilangan ganjil: ${isOdd(1000)}`); // false
+console.log(`1001 adalah bilangan ganjil: ${isOdd(1001)}`); // true
+
+// Tugas 4: Menghapus kemunculan pertama dari string pencarian
+function removeFirstOccurrence(mainString, searchString) {
+  // Mencari posisi pertama dari searchString dalam mainString
+  const position = mainString.indexOf(searchString);
+  
+  if (position === -1) {
+    // Jika searchString tidak ditemukan, kembalikan string asli
+    return mainString;
+  } else {
+    // Gabungkan bagian sebelum dan sesudah searchString
+    return mainString.substring(0, position) + 
+           mainString.substring(position + searchString.length);
+  }
+}
+const originalString = "Hello world";
+const searchStr = "ell";
+console.log(`"${originalString}" tanpa "${searchStr}" pertama: "${removeFirstOccurrence(originalString, searchStr)}"`);
+
+// Tugas 5: Memeriksa apakah string adalah palindrom
+function isPalindrome(str) {
+  // Ubah string menjadi lowercase dan hapus karakter non-alphanumeric
+  const cleanStr = str.toLowerCase().replace(/[^a-z0-9]/g, '');
+  
+  // Balik string dan bandingkan dengan string asli yang sudah dibersihkan
+  const reversedStr = cleanStr.split('').reverse().join('');
+  
+  return cleanStr === reversedStr;
+}
+
+const testString = "madam";
+console.log(`"${testString}" adalah palindrom: ${isPalindrome(testString)}`);
